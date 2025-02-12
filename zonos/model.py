@@ -42,9 +42,9 @@ class Zonos(nn.Module):
         self._cg_scale = None
 
     @classmethod
-    def from_pretrained(cls, repo_id: str, revision: str | None = None, device: str = "cuda") -> "Zonos":
-        config_path = hf_hub_download(repo_id=repo_id, filename="config.json", revision=revision)
-        model_path = hf_hub_download(repo_id=repo_id, filename="model.safetensors", revision=revision)
+    def from_pretrained(cls, repo_id: str, revision: str | None = None, device: str = "cuda", **kwargs) -> "Zonos":
+        config_path = hf_hub_download(repo_id=repo_id, filename="config.json", revision=revision, **kwargs)
+        model_path = hf_hub_download(repo_id=repo_id, filename="model.safetensors", revision=revision, **kwargs)
         return cls.from_local(config_path, model_path, device)
 
     @classmethod
